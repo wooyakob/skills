@@ -172,6 +172,9 @@ print(f"Loaded {len(keys)} documents")
 ## Document Expiry Patterns
 
 ```python
+from datetime import datetime, timedelta, timezone
+from uuid import uuid4
+
 # Session store — auto-expire after 1 hour of inactivity
 def refresh_session(collection, session_id):
     collection.touch(session_id, timedelta(hours=1))
@@ -180,14 +183,14 @@ def refresh_session(collection, session_id):
 def create_token(collection, token_id, user_id):
     collection.insert(
         f"token::{token_id}",
-        {"userId": user_id, "createdAt": datetime.utcnow().isoformat()},
+        {"userId": user_id, "createdAt": datetime.now(timezone.utc).isoformat()},
         InsertOptions(expiry=timedelta(minutes=15))
     )
 
 # Audit log — keep for 90 days then auto-delete
 def write_audit(collection, event):
     collection.upsert(
-        f"audit::{datetime.utcnow().date()}::{uuid4()}",
+        f"audit::{datetime.now(timezone.utc).date()}::{uuid4()}",
         event,
         UpsertOptions(expiry=timedelta(days=90))
     )

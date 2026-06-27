@@ -147,7 +147,7 @@ Let the query engine suggest indexes:
 SELECT * FROM system:my_user_info;
 
 -- Run the advisor
-SELECT advisise(
+SELECT ADVISOR(
   "SELECT email, name FROM `bucket`.`scope`.`users` WHERE type = 'user' AND status = 'active'",
   "SELECT * FROM `bucket`.`scope`.`orders` WHERE userId = $id AND status = 'pending'"
 );

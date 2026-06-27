@@ -90,7 +90,7 @@ function OnUpdate(doc, meta) {
 
     // Use couchbase.mutateIn for atomic increments
     try {
-        couchbase.mutateIn("counters", key, [
+        couchbase.mutateIn(counters, key, [
             couchbase.MutateInSpec.increment("views", 1, { createPath: true }),
             couchbase.MutateInSpec.increment("uniqueUsers", doc.isNewSession ? 1 : 0, { createPath: true }),
             couchbase.MutateInSpec.upsert("lastViewedAt", new Date().toISOString())

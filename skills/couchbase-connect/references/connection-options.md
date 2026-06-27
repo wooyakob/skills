@@ -6,6 +6,7 @@
 from couchbase.cluster import Cluster
 from couchbase.auth import PasswordAuthenticator
 from couchbase.options import ClusterOptions, ClusterTimeoutOptions
+from datetime import timedelta
 
 auth = PasswordAuthenticator("username", "password")
 opts = ClusterOptions(auth)
@@ -23,7 +24,8 @@ cluster.wait_until_ready(timedelta(seconds=15))
 ## Custom Timeouts
 
 ```python
-from couchbase.options import ClusterTimeoutOptions
+from datetime import timedelta
+from couchbase.options import ClusterOptions, ClusterTimeoutOptions
 
 timeout_opts = ClusterTimeoutOptions(
     kv_timeout=timedelta(seconds=5),

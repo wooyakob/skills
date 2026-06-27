@@ -60,7 +60,7 @@ The REST API at `https://cloudapi.cloud.couchbase.com/v4/` manages clusters, buc
 ### Authentication
 
 1. Generate an API key: Capella UI → Organization → API Keys → Create API Key
-2. The key has an `id` and `secret`; use HTTP Basic Auth: `Authorization: Bearer <token>`
+2. The key has an `id` and `secret`; use HTTP Basic Auth: `Authorization: Basic <base64(id:secret)>` (or pass `-u "id:secret"` to curl)
 
 For V4 API, use an access token obtained via:
 ```bash
