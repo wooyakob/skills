@@ -40,6 +40,22 @@
         "./skills/web-artifacts-builder",
         "./skills/webapp-testing"
       ]
+    },
+    {
+      "name": "couchbase-skills",
+      "description": "Comprehensive set of skills for using Couchbase as a data platform, covering cluster connections, key-value operations, SQL++ queries, full-text and vector search, document data modeling, indexing, Capella cloud management, and event-driven processing with Eventing",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/couchbase-connect",
+        "./skills/couchbase-kv",
+        "./skills/couchbase-query",
+        "./skills/couchbase-search",
+        "./skills/couchbase-data-modeling",
+        "./skills/couchbase-indexing",
+        "./skills/couchbase-capella",
+        "./skills/couchbase-eventing"
+      ]
     }
   ]
 }
